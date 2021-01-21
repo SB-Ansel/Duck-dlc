@@ -1,0 +1,129 @@
+/* .css-selector {
+    background: linear-gradient(270deg, #246655, #662524);
+    background-size: 400% 400%;
+
+    animation: AnimationName 2s ease infinite;
+}
+
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+} */
+
+
+
+
+
+.RowContainer {
+    display: flex;
+    justify-content: space-between;
+}
+.Flex {
+    flex: 1;
+    display: flex;
+    margin-left: 1.5em;
+}
+
+
+.Button {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    font: inherit;
+    color: inherit;
+    outline: none;
+    margin-left: 0.3em;
+    padding: 0 1em;
+    /* transition: all .1s ease-in-out; */
+}
+
+.Button:hover {
+    background-color: rgba(197, 118, 0,1);
+    color: white;
+}
+.Button:active {
+    background-color: rgba(197, 118,0,.8);
+}
+.ButtonRed:hover {
+    background-color: rgba(120, 0, 0, 1);
+    color: white;
+}
+.ButtonRed:active {
+    background-color: rgba(120, 0, 0, 0.7);
+
+}
+.ButtonGreen:hover {
+    background-color: rgba(0, 120, 0, 1);
+    color: white;
+}
+.ButtonGreen:active {
+    background-color: rgba(0, 120, 0, 0.7);
+}
+
+.Button:disabled,
+.Button[disabled]{
+  background-color: transparent;
+  color: #666666;
+}
+
+
+
+
+
+.Select select {
+
+  appearance: none;
+  background-color: inherit;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+  padding: .5em .3em;
+  color: inherit;
+  }
+
+  .Select {
+    appearance: none;
+    width: 50%;
+    cursor: pointer;
+    background-color: #292929;
+    border: 1px solid #292929;
+    font-size: inherit;
+    color:inherit;
+    font-family: inherit;
+    /* padding: .5em .3em; */
+    outline: none;
+    font-size: inherit;
+  cursor: inherit;
+  line-height: 1.5em;
+  margin: 0;
+  font-family: inherit;
+    /* background-image: linear-gradient(to top, #f9f9f9, #fff 33%); */
+    display: grid;
+    grid-template-areas: "select";
+    align-items: center;
+  }
+  .Select::after {
+    content: "";
+    width: 0.8em;
+    height: 0.5em;
+    margin-right: .5em;
+    background-color: #9A9A9A;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    justify-self: end;
+  }
+  select,
+  .Select::after {
+
+      grid-area: select;
+  }
+
+
+
+

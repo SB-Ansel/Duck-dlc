@@ -1,0 +1,15 @@
+.ProfileNameChanger {
+    background-color: inherit;
+}
+.ProfileNameChanger h2{
+    margin: 0;
+    margin-bottom: 1em;
+}
+.Modal {
+    /* padding: 3em 2em; */
+    text-align: center;
+}
+.HiddenSubmit {
+    position: absolute; 
+    left: -9999px
+}

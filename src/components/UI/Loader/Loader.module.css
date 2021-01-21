@@ -1,0 +1,38 @@
+@keyframes  :global(spinner) {
+        0% {
+          transform:rotate(0deg);
+        }
+        100% {
+          transform:rotate(360deg);
+        }
+      }
+
+.Loader {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    position: absolute;
+    background-color: #1e1e1e;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.Loader:before :global{
+    
+
+    z-index: 10;
+    animation: 2s cubic-bezier(0.63, 0.17, 0.43, 0.92) infinite spinner;
+    animation-play-state: inherit;
+    border: solid .5em #cfd0d142;
+    border-bottom-color: #fff;
+    border-radius: 50%;
+    height: 5em;
+    width: 5em;
+    position: absolute;
+    content: '';
+    /* left: -15%;
+    top: -15%;
+    right:0;
+    bottom:0; */
+}

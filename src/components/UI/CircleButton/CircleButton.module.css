@@ -1,0 +1,24 @@
+.CircleButton {
+    position: absolute;
+    appearance: none;
+    border:none;
+    background-color: inherit;
+    color: inherit;
+    font: inherit;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2em;
+    font-size: 1.5em;
+    /* width: 1em;
+    height: 1em; */
+    border-radius: 1em;
+    outline:none;
+    top: 1em;
+    right: 1em;
+    z-index: 999;
+}
+.CircleButton:hover {
+    background-color:rgba(100,100,100,0.2);
+}

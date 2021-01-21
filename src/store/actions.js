@@ -1,0 +1,11 @@
+export const SET_SETTING = 'SET_SETTING';
+export const GET_SETTINGS = 'GET_SETTINGS';
+export const LOAD_SETTINGS = 'LOAD_SETTINGS';
+export const SAVE_SETTINGS = 'SAVE_SETTINGS';
+export const ADD_PROFILE = 'ADD_PROFILE';
+export const REMOVE_PROFILE = 'REMOVE_PROFILE';
+export const RENAME_PROFILE = 'RENAME_PROFILE';
+export const CHANGE_PROFILE = 'CHANGE_PROFILE';
+export const LOAD_STATE = 'LOAD_STATE';
+export const SET_LOADING = 'SET_LOADING';
+
