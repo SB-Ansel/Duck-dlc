@@ -10,35 +10,12 @@ import { connect } from 'react-redux';
 import { IconButton} from '@material-ui/core';
 import {MoreHoriz} from '@material-ui/icons';
 
-import { ipcRenderer } from '../../../appRuntime.ts'
 
-let openDirectory = () => {
-    console.log("openDirectory")
-    ipcRenderer.send('openDirectory')
-    
-    // ipcRenderer.on('filePath', (args) =>{
-    //     console.log('ping')
-    //     console.log(args)
-//})
-
-//Get return and store in prop.value
-}
 
 
 
 
 const Setting = (props) => {
-
-    // Get return from openDirectory
-    ipcRenderer.on("openDirectory-reply", (event, arg) => {
-        console.log(arg);
-        if (arg.length > 0)
-        {
-            // Set path setting to first path from array 
-            props.onSetSetting("path", arg[0])
-            //console.log(props);
-        }
-    })
 
     let inputElement = "";
     switch (props.type) {
@@ -74,7 +51,7 @@ const Setting = (props) => {
             </div>
             <div className={classes.inputElementDiv}>
                 {inputElement}
-                <IconButton className={classes.iconButton} onClick={openDirectory} aria-label="Open Directory">
+                <IconButton className={classes.iconButton} onClick={props.buttonHandler} aria-label="Open Directory">
                     <MoreHoriz>
                     </MoreHoriz>
                 </IconButton>

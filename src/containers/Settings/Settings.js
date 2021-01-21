@@ -11,6 +11,8 @@ import { Close, Folder, HelpOutline, LaunchRounded } from '@material-ui/icons';
 // const electron = window.require('electron');
 // const ipcRenderer  = electron.ipcRenderer;
 
+import { ipcRenderer } from '../../appRuntime'
+
 const Settings = (props) => {
     let [showModal, setShowModal] = useState(false);
 
@@ -35,6 +37,20 @@ const Settings = (props) => {
         // <input directory="" webkitdirectory="" type="file" />
     }
 
+    let openDirectory = () => {
+        console.log("openDirectory")
+        ipcRenderer.send('openDirectory')
+    }
+    // Get return from openDirectory
+    ipcRenderer.on("openDirectory-reply", (event, arg) => {
+        console.log(arg);
+        if (arg.length > 0)
+        {
+            // Set path setting to first path from array 
+            props.onSetSetting("path", arg[0])
+        }
+    })
+
     return (
         <div className={classes.Settings}>
             <IconButton className={classes.iconButton} className={classes.closeButton} style={{color:'white'}} onClick={closeButtonHandler} aria-label="Close">
@@ -52,6 +68,7 @@ const Settings = (props) => {
             desc="Change the default download directory for duck-dlc"
             property="path"
             value={props.settings.path || ''}
+            buttonHandler={openDirectory}
             />
             <h1>About this app</h1>
             <h5>Some generic information here about app</h5>
