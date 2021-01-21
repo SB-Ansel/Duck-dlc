@@ -25,7 +25,21 @@ let openDirectory = () => {
 }
 
 
+
+
 const Setting = (props) => {
+
+    // Get return from openDirectory
+    ipcRenderer.on("openDirectory-reply", (event, arg) => {
+        console.log(arg);
+        if (arg.length > 0)
+        {
+            // Set path setting to first path from array 
+            props.onSetSetting("path", arg[0])
+            //console.log(props);
+        }
+    })
+
     let inputElement = "";
     switch (props.type) {
         case 'select':
