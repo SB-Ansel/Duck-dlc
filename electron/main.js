@@ -59,8 +59,8 @@ function createWindow() {
     loading.show()
 
     options = function () {
-        mainwindow.loadURL('http://localhost:3000/#/settings')
-        }
+        mainwindow.webContents.send("openSettings");
+    }
 }
 
 app.whenReady().then(createWindow)
