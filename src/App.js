@@ -8,11 +8,51 @@ import Home from "./containers/Home/Home";
 import Settings from "./containers/Settings/Settings"; 
 import NotFound from "./components/NotFound/NotFound";
 import Footer from "./components/Footer/Footer.js";
+import { ipcRenderer } from './appRuntime'
+
+import { useHistory } from "react-router-dom";
+
 
 // import { ipcRenderer } from '../../../appRuntime.ts'
 
 function App(props) {
+  const history = useHistory();
+
   let [loadedState, setLoadedState] = useState({});
+  let [settingsOpen, setSettingsOpen] = useState(false);
+
+  
+  // Register ipc listener on every rerender
+  useEffect(() => {
+    let openSettingsListener = (event) => {
+      setSettingsOpen(!settingsOpen);
+    }
+    ipcRenderer.on("openSettings", openSettingsListener)
+
+    // Clean up listeners on unmount to prevent event leaks
+    return () => {
+      ipcRenderer.removeListener("openSettings", openSettingsListener)
+    }
+  })
+
+  // Toggle settings when settingsOpen value chnages
+  useEffect(() => {
+    if (settingsOpen)
+      toggleSettings(settingsOpen);
+    else
+      toggleSettings(settingsOpen);
+
+  }, [settingsOpen]);
+
+  // Route to /settings and / depending on the toggle value
+  let toggleSettings = (toggle) => {
+    if (toggle) {
+      history.push("/settings")
+    } else {
+      history.push("/")
+    }
+  }
+
   return (
     <div className={classes.App}>
       {" "}
