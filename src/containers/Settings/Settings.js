@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './Settings.module.css';
 import _uniqueId from 'lodash/uniqueId';
 import {Divider, Paper, InputBase, IconButton} from '@material-ui/core';
@@ -28,15 +28,28 @@ const Settings = (props) => {
     let openDirectory = () => {
         ipcRenderer.send('openDirectory')
     }
-    // Get return from openDirectory
-    ipcRenderer.on("openDirectory-reply", (event, arg) => {
-        console.log("openDirectory-reply");
-        console.log(arg);
-        if (arg.length > 0)
-        {
-            // Set path setting to first path from array 
-            props.onSetSetting("path", arg[0])
+
+    useEffect(() => {
+        // Get return from openDirectory
+        let openDirectoryListener = (event, arg) => {
+            console.log("openDirectory-reply");
+            console.log(arg);
+            if (arg.length > 0)
+            {
+                // Set path setting to first path from array 
+                props.onSetSetting("path", arg[0])
+            }
+        };
+
+        // Register listener
+        ipcRenderer.on("openDirectory-reply", openDirectoryListener);
+
+        // Clean up
+        return () => {
+            // Unregister listener
+            ipcRenderer.removeListener("openDirectory-reply", openDirectoryListener)
         }
+        
     })
 
     return (
