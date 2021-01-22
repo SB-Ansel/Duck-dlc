@@ -12,16 +12,12 @@ import { ipcRenderer } from './appRuntime'
 
 import { useHistory } from "react-router-dom";
 
-
-// import { ipcRenderer } from '../../../appRuntime.ts'
-
 function App(props) {
   const history = useHistory();
 
   let [loadedState, setLoadedState] = useState({});
   let [settingsOpen, setSettingsOpen] = useState(false);
 
-  
   // Register ipc listener on every rerender
   useEffect(() => {
     let openSettingsListener = (event) => {
@@ -35,7 +31,7 @@ function App(props) {
     }
   })
 
-  // Toggle settings when settingsOpen value chnages
+  // Toggle settings when settingsOpen value changes
   useEffect(() => {
     if (settingsOpen)
       toggleSettings(settingsOpen);
@@ -62,7 +58,7 @@ function App(props) {
         <Route path="/settings" exact component={Settings} />{" "}
         <Route path="/" component={NotFound} />{" "}
       </Switch>{" "}
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }

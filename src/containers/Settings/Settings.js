@@ -2,16 +2,14 @@ import React, { useState } from 'react';
 import classes from './Settings.module.css';
 import _uniqueId from 'lodash/uniqueId';
 import {Divider, Paper, InputBase, IconButton} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import Setting from './../../components/Settings/Setting/Setting';
 import * as actionTypes from '../../store/actions';
 import { connect } from 'react-redux';
-// import ProfileNameChanger from './../../components/Settings/ProfileNameChanger/ProfileNameChanger';
-import { Close, Folder, HelpOutline, LaunchRounded } from '@material-ui/icons';
-// const electron = window.require('electron');
-// const ipcRenderer  = electron.ipcRenderer;
 
-import { ipcRenderer } from '../../appRuntime'
+import { Close, MoreHoriz, HelpOutline, LaunchRounded } from '@material-ui/icons';
+
+import { ipcRenderer } from '../../appRuntime' //ipc bridge, thanks webpack.
 
 const Settings = (props) => {
     let [showModal, setShowModal] = useState(false);
@@ -25,16 +23,6 @@ const Settings = (props) => {
     let closeButtonHandler = () => {
         //Route back to home.
         props.history.replace("/");
-    }
-
-    let helpButtonHandler = () => {
-        //Route to SB-Ansel github.
-        window.open('http://github.com/SB-Ansel', '_blank')
-    }
-
-    let filePathButtonHandler = () => {
-        //Route to SB-Ansel github.
-        // <input directory="" webkitdirectory="" type="file" />
     }
 
     let openDirectory = () => {
@@ -53,22 +41,21 @@ const Settings = (props) => {
 
     return (
         <div className={classes.Settings}>
-            <IconButton className={classes.iconButton} className={classes.closeButton} style={{color:'white'}} onClick={closeButtonHandler} aria-label="Close">
+            <IconButton className={classes.closeButton} style={{color:'white'}} onClick={closeButtonHandler} aria-label="Close">
                 <Close />
             </IconButton>
-            <IconButton className={classes.iconButton} className={classes.helpButton} style={{color:'white'}} onClick={helpButtonHandler} aria-label="Help">
+            {/* <IconButton className={classes.iconButton} className={classes.helpButton} style={{color:'white'}} onClick={helpButtonHandler} aria-label="Help">
                 <HelpOutline />
-            </IconButton>
-            
+            </IconButton> */}
             <h1>Settings</h1>            
             <Setting 
             title="Default download directory" 
             type="downloadDirectory" 
             handler={onTextInputChange}
-            desc="Change the default download directory for duck-dlc"
+            desc="Change the default download directory for duck-dlc."
             property="path"
             value={props.settings.path || ''}
-            buttonHandler={openDirectory}
+            Icon={<IconButton className={classes.sideButton} style={{color:'white'}} onClick={openDirectory}><MoreHoriz></MoreHoriz></IconButton>}
             />
             <h1>About this app</h1>
             <h5>Some generic information here about app</h5>

@@ -103,15 +103,15 @@ const menu = [{
             },
         ],
     },
-    // {
-    //     label: "Help",
-    //     submenu: [{
-    //             label: "Learn More",
-    //             click() {
-    //                 shell.openExternal("https://github.com/SB-Ansel");
-    //             },
-    //         },
-    //     ],
-    // },
+    {
+        label: "Help",
+        submenu: [{
+                label: "Learn More",
+                click() {
+                    shell.openExternal("https://github.com/SB-Ansel/duck-dlc");
+                },
+            },
+        ],
+    },
 ];
 module.exports = menu;

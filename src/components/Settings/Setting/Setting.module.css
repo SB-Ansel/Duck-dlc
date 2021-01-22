@@ -32,8 +32,8 @@
 .iconButton{
     display: flex;
     position: relative;
-    margin: 7px;
+    /* margin: 7px; */
 }
 .iconButton:hover {
-    background-color:rgba(100,100,100,0.2);
+    /* background-color:rgba(100,100,100,0.2); */
 }

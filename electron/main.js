@@ -94,16 +94,14 @@ ipcMain.handle('setStoreValue', (event, key, value) => {
     return store.set(key, value);
 });
 
-ipcMain.on('openDirectory', (event, arg) => { //handle incoming request and return promise to renderer
+ipcMain.on('openDirectory', (event) => { //handle incoming request and return promise to renderer
     openDirectory = dialog.showOpenDialog(mainwindow, {
         title:'Select a directory',
         properties: ['openDirectory']
     }).then(result => {
         console.log(result.canceled)
         console.log(result.filePaths)
-        // ipcMain.emit('filePath', result.filePaths)
-        // return result.filePaths
-        event.reply("openDirectory-reply", result.filePaths)
+        event.reply("openDirectory-reply", result.filePaths) //returns an empty array need to look into later. it should be false and return nothing.
       }).catch(err => {
         console.log(err)
       })

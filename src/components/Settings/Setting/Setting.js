@@ -7,17 +7,13 @@ import Text from '../../UI/Input/Text/Text';
 import * as actionTypes from '../../../store/actions';
 import { connect } from 'react-redux';
 
-import { IconButton} from '@material-ui/core';
+import {IconButton} from '@material-ui/core';
 import {MoreHoriz} from '@material-ui/icons';
-
-
-
-
-
 
 const Setting = (props) => {
 
     let inputElement = "";
+    
     switch (props.type) {
         case 'select':
             inputElement = <Select 
@@ -39,6 +35,7 @@ const Setting = (props) => {
             onChange={props.handler} 
             value={props.value} 
             placeholder={props.title} 
+            Icon={props.Icon}
             />
     }
     return (
@@ -51,10 +48,11 @@ const Setting = (props) => {
             </div>
             <div className={classes.inputElementDiv}>
                 {inputElement}
-                <IconButton className={classes.iconButton} onClick={props.buttonHandler} aria-label="Open Directory">
+                {props.Icon}
+                {/* <IconButton className={classes.iconButton} className={classes.fileButton}onClick={props.buttonHandler} aria-label="Open Directory">
                     <MoreHoriz>
                     </MoreHoriz>
-                </IconButton>
+                </IconButton> */}
             </div>
         </div>
     );
