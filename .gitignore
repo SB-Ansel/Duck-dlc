@@ -3,6 +3,7 @@
 /node_modules
 /build
 /.pnp
+/issue-templates
 .pnp.js
 # testing
 /coverage
@@ -41,3 +42,4 @@ AnselsNotes.txt
 obj/
 [Rr]elease*/
 _ReSharper*/
+markdown.md

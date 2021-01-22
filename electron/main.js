@@ -32,11 +32,11 @@ function createWindow() {
         width: 910,
         height: 500,
         icon: path.join(__dirname, '../assets/icon.png'),
-        minHeight: 910,
-        minWidth: 500,
+        minHeight: 500,
+        minWidth: 910,
         backgroundColor: '#1E1E1E',
         show: false,
-        resizable: false,
+        resizable: true,
         webPreferences: {
             nodeIntegration: true,
         }

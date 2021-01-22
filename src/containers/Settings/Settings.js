@@ -26,11 +26,11 @@ const Settings = (props) => {
     }
 
     let openDirectory = () => {
-        console.log("openDirectory")
         ipcRenderer.send('openDirectory')
     }
     // Get return from openDirectory
     ipcRenderer.on("openDirectory-reply", (event, arg) => {
+        console.log("openDirectory-reply");
         console.log(arg);
         if (arg.length > 0)
         {
