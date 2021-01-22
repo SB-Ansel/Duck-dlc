@@ -13,7 +13,7 @@ assignees: ''
 - Application version: [pre-alpha]
 
 ## To Reproduce ##
-Steps to reproduce the behavior:
+Steps to reproduce the behaviour:
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
@@ -23,7 +23,7 @@ Steps to reproduce the behavior:
 What was the expected behaviour?
 
 ## Actual behaviour ##
-A clear and concise description of the actual behavior.
+A clear and concise description of the actual behaviour.
 
 ---
 **Screenshots:**
