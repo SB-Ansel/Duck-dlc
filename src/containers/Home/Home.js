@@ -76,7 +76,6 @@ const Home = (props) => {
       <IconButton color="primary" className={classes.iconButton} aria-label="directions">
         <LaunchRounded/>
       </IconButton>
-      {props.settings.path}
     </Paper>    
   );
 };
