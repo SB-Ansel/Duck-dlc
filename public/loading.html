@@ -1,94 +1,104 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Title of the document</title>
     <style>
-        @keyframes spinner {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+      @keyframes spinner {
+        0% {
+          transform: rotate(0deg);
         }
-        
-        *,
-        *:before {
-            box-sizing: border-box;
+        100% {
+          transform: rotate(360deg);
         }
-        
-        html,
-        body {
-            height: 100vh;
-            width: 100vw;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .spin {
-            height: 5em;
-            width: 5em;
-            position: relative;
-        }
-        
-        .spin:before {
-            z-index: 10;
-            animation: 1.5s linear infinite spinner;
-            animation-play-state: inherit;
-            /* border: solid .5em #cfd0d142;
+      }
+
+      *,
+      *:before {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100vh;
+        width: 100vw;
+        padding: 0;
+        margin: 0;
+      }
+
+      .spin {
+        height: 5em;
+        width: 5em;
+        position: relative;
+      }
+
+      .spin:before {
+        z-index: 10;
+        animation: 1.5s linear infinite spinner;
+        animation-play-state: inherit;
+        /* border: solid .5em #cfd0d142;
             border-bottom-color: #fff; */
-            border-radius: 50%;
-            height: 130%;
-            width: 130%;
-            position: absolute;
-            content: '';
-            left: -15%;
-            top: -15%;
-            right: 0;
-            bottom: 0;
-        }
-        
-        .spin img {
-            z-index: 999;
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-        
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            background-color: #1E1E1E;
-            color: white;
-        }
-        
-        h1 {
-            font-weight: normal;
-            margin-top: -1.5em;
-        }
-        
-        img {
-            width: 200px;
-            height: 200px;
-        }
+        border-radius: 50%;
+        height: 130%;
+        width: 130%;
+        position: absolute;
+        content: "";
+        left: -15%;
+        top: -15%;
+        right: 0;
+        bottom: 0;
+      }
+
+      .spin img {
+        z-index: 999;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #1e1e1e;
+        color: white;
+      }
+
+      h1 {
+        font-weight: lighter;
+        font-style: italic;
+        /* margin-top: -1.5em; */
+      }
+
+      img {
+        width: 200px;
+        height: 200px;
+      }
+      p {
+        font-weight: lighter;
+        font-style: italic;
+        color: #6b6363;
+        margin: 0.1em !important;
+      }
     </style>
-</head>
-
-<body>
-    <h1>duck-dlc</h1>
-
+    <script src="../electron/js/VersionNumber.js" type="text/javascript" charset="utf-8" async defer></script>
+  </head>
+  <body>
     <div class="spin">
-        <img src="../assets/unknown.png" style="animation: spinner 5s infinite;">
+      <img
+        src="../assets/logo/logo3d-500.png"
+        style="animation: spinner 5s infinite"
+      />
     </div>
-    <footer>Version +$</footer>
-</body>
-
+    <h1>Duck-dlc</h1>
+    <p id="version"></p>
+    <!-- <footer></footer> -->
+  </body>
 </html>

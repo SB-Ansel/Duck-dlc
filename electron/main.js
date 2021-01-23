@@ -23,6 +23,7 @@ function createWindow() {
         backgroundColor: '#1E1E1E',
         width: 300,
         height: 300,
+        icon: path.join(__dirname, '../assets/logo/logo-hd.png'),
         webPreferences: { 
             nodeIntegration: true,
         }
@@ -31,7 +32,7 @@ function createWindow() {
     mainwindow = new BrowserWindow({
         width: 910,
         height: 500,
-        icon: path.join(__dirname, '../assets/icon.png'),
+        icon: path.join(__dirname, '../assets/logo/logo-hd.png'),
         minHeight: 500,
         minWidth: 910,
         backgroundColor: '#1E1E1E',
@@ -57,7 +58,6 @@ function createWindow() {
     })
     loading.loadURL(isDev ? `file://${path.join(__dirname, '../public/loading.html')}` : `file://${path.join(__dirname, '../build/loading.html')}`)
     loading.show()
-
     options = function () {
         mainwindow.webContents.send("openSettings");
     }
@@ -101,7 +101,7 @@ ipcMain.on('openDirectory', (event) => { //handle incoming request and return pr
     }).then(result => {
         console.log(result.canceled)
         console.log(result.filePaths)
-        event.reply("openDirectory-reply", result.filePaths) //returns an empty array need to look into later. it should be false and return nothing.
+        event.reply("openDirectory-reply", result.filePaths)
       }).catch(err => {
         console.log(err)
       })

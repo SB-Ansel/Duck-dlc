@@ -7,7 +7,7 @@
     "private": true,
     "author": {
         "name": "SB-Ansel",
-        "license": "MIT"
+        "license": "GNU v3.0"
     },
     "build": {
         "productName": "Electron App",
