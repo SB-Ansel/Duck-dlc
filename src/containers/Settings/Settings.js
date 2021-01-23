@@ -21,8 +21,8 @@ const Settings = (props) => {
     }
     
     let closeButtonHandler = () => {
-        //Route back to home.
-        props.history.replace("/");
+        // Use redux to route back to home.
+        props.onToggleSettings(false);
     }
 
     let openDirectory = () => {
@@ -88,8 +88,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onSetSetting: (id, value) => dispatch({ type: actionTypes.SET_SETTING, payload: { id: id, value: value } }),
         onAddProfile: (id, name) => dispatch({ type: actionTypes.ADD_PROFILE, payload: { id: id, name: name } }),
-        onRemoveProfile: (id) => dispatch({ type: actionTypes.REMOVE_PROFILE, payload: { id: id } })
-
+        onRemoveProfile: (id) => dispatch({ type: actionTypes.REMOVE_PROFILE, payload: { id: id } }),
+        onToggleSettings: (toggle) => dispatch({ type: actionTypes.TOGGLE_SETTINGS, payload: { toggle: toggle } }),
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Settings);
