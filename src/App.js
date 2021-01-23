@@ -16,12 +16,12 @@ function App(props) {
   const history = useHistory();
 
   let [loadedState, setLoadedState] = useState({});
-  let [settingsOpen, setSettingsOpen] = useState(false);
 
   // Register ipc listener on every rerender
   useEffect(() => {
     let openSettingsListener = (event) => {
-      setSettingsOpen(!settingsOpen);
+      // Send to redux
+      props.onToggleSettings(!props.settingsOpen)
     }
     ipcRenderer.on("openSettings", openSettingsListener)
 
@@ -31,23 +31,12 @@ function App(props) {
     }
   })
 
-  // Toggle settings when settingsOpen value changes
   useEffect(() => {
-    if (settingsOpen)
-      toggleSettings(settingsOpen);
-    else
-      toggleSettings(settingsOpen);
-
-  }, [settingsOpen]);
-
-  // Route to /settings and / depending on the toggle value
-  let toggleSettings = (toggle) => {
-    if (toggle) {
+    if (props.settingsOpen)
       history.push("/settings")
-    } else {
+    else
       history.push("/")
-    }
-  }
+  },[props.settingsOpen])
 
   return (
     <div className={classes.App}>
@@ -68,6 +57,7 @@ const mapStateToProps = (state) => {
     settings:
       state.settings.find((el) => el.profileId === state.currentProfileId) ||
       {},
+    settingsOpen: state.settingsOpen || false,
   };
 };
 
@@ -75,6 +65,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onLoadState: (data) =>
       dispatch({ type: actionTypes.LOAD_STATE, payload: data }),
+    onToggleSettings: (toggle) => 
+      dispatch({ type: actionTypes.TOGGLE_SETTINGS, payload: { toggle: toggle } }),
+    
   };
 };
 

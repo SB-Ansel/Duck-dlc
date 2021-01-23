@@ -146,6 +146,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 loading: action.payload.value
             }
+        case actionTypes.TOGGLE_SETTINGS:
+            return {
+                ...state,
+                settingsOpen: action.payload.toggle
+            }
         default:
     }
     

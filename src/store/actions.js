@@ -8,4 +8,5 @@ export const RENAME_PROFILE = 'RENAME_PROFILE';
 export const CHANGE_PROFILE = 'CHANGE_PROFILE';
 export const LOAD_STATE = 'LOAD_STATE';
 export const SET_LOADING = 'SET_LOADING';
+export const TOGGLE_SETTINGS = 'TOGGLE_SETTINGS';
 
