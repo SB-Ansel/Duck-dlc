@@ -6,8 +6,8 @@ import React, {useState, useEffect} from 'react';
 // import { MdSettings } from 'react-icons/md';
 // import View from '../View/View';
 // import Loader from '../../components/UI/Loader/Loader';
-// import * as actionTypes from '../../store/actions';
-// import {connect} from 'react-redux';
+import * as actionTypes from '../../store/actions';
+import {connect} from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import {Divider, Paper, InputBase, IconButton} from '@material-ui/core';
@@ -34,46 +34,64 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export default function CustomizedInputBase() {
-    const classes = useStyles();
-    return (
-      <Paper component="form" className={classes.root}>
-        <IconButton className={classes.iconButton} aria-label="folder">
-          <FolderOpenRounded/>
-        </IconButton>
+// export default function CustomizedInputBase() {
+//     const classes = useStyles();
+//     return (
+//       <Paper component="form" className={classes.root}>
+//         <IconButton className={classes.iconButton} aria-label="folder">
+//           <FolderOpenRounded/>
+//         </IconButton>
 
-        <InputBase
-          className={classes.input}
-          placeholder="Quack!"
-          inputProps={{ 'aria-label': 'Enter a valid youtube url' }}
-        />
-        <Divider className={classes.divider} orientation="vertical" />
-        <IconButton color="primary" className={classes.iconButton} aria-label="directions">
-          <LaunchRounded/>
-        </IconButton>
-      </Paper>    
-    );
-  }
+//         <InputBase
+//           className={classes.input}
+//           placeholder="Quack!"
+//           inputProps={{ 'aria-label': 'Enter a valid youtube url' }}
+//         />
+//         <Divider className={classes.divider} orientation="vertical" />
+//         <IconButton color="primary" className={classes.iconButton} aria-label="directions">
+//           <LaunchRounded/>
+//         </IconButton>
+//       </Paper>    
+//     );
+//   }
 
 
   // Snackbar popup when download is complete! https://callstack.github.io/react-native-paper/snackbar.html
 
 
-// const Home = (props) => {
+const Home = (props) => {
+  const classes = useStyles();
+  return (
+    <Paper component="form" className={classes.root}>
+      <IconButton className={classes.iconButton} aria-label="folder">
+        <FolderOpenRounded/>
+      </IconButton>
 
-// };
+      <InputBase
+        className={classes.input}
+        placeholder="Quack!"
+        inputProps={{ 'aria-label': 'Enter a valid youtube url' }}
+      />
+      <Divider className={classes.divider} orientation="vertical" />
+      <IconButton color="primary" className={classes.iconButton} aria-label="directions">
+        <LaunchRounded/>
+      </IconButton>
+      {props.settings.path}
+    </Paper>    
+  );
+};
 
-// const mapStateToProps = state => {
-//     return {
-//         loading: state.loading,
-//         settings: state.settings.find(el => el.profileId === state.currentProfileId) || {}
-//     };
-// };
+const mapStateToProps = state => {
+    return {
+        loading: state.loading,
+        settings: state.settings.find(el => el.profileId === state.currentProfileId) || {}
+    };
+};
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         onSetLoading: (value) => dispatch({type: actionTypes.SET_LOADING, payload: {value: value}}),
-//     };
-// };
+const mapDispatchToProps = dispatch => {
+    return {
+        onSetLoading: (value) => dispatch({type: actionTypes.SET_LOADING, payload: {value: value}}),
+    };
+};
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
