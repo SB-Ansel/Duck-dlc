@@ -1,4 +1,4 @@
-const { app, Menu, BrowserWindow, ipcMain, dialog} = require('electron');
+const { app, Menu, BrowserWindow, ipcMain, dialog, shell} = require('electron');
 const isDev = require('electron-is-dev');
 const path = require('path');
 const menuModule = require("./js/SBAnselControls.js");
@@ -22,6 +22,7 @@ function createWindow() {
         frame: false,
         backgroundColor: '#1E1E1E',
         width: 300,
+        alwaysOnTop: true,
         height: 300,
         icon: path.join(__dirname, '../assets/logo/logo-hd.png'),
         webPreferences: { 
@@ -94,6 +95,7 @@ ipcMain.handle('setStoreValue', (event, key, value) => {
     return store.set(key, value);
 });
 
+//Settings openDirectory
 ipcMain.on('openDirectory', (event) => { //handle incoming request and return promise to renderer
     openDirectory = dialog.showOpenDialog(mainwindow, {
         title:'Select a directory',
@@ -106,6 +108,9 @@ ipcMain.on('openDirectory', (event) => { //handle incoming request and return pr
         console.log(err)
       })
     });
-
+//Main downloadsDirectory
+ipcMain.on('downloadsDirectory', (event, args) => {
+    shell.openPath(args)
+});
 ////#endRegion - IPC handlers
 module.exports = function mainWindow() { } //Imports sb-ansel_control.js

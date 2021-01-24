@@ -10,22 +10,6 @@ var separator = {
 const menu = [{
         label: "File",
         submenu: [
-            // {
-            //     label: "Add video from file",
-            //     accelerator: process.platform == "darwin" ? "Command+Q" : "Ctrl+Q",
-            //     click() {
-            //         console.log(dialog.showOpenDialog({ properties: ['openFile'] }))
-            //     },
-            // },
-            // separator,
-            // {
-            //     label: "Open",
-            //     accelerator: process.platform == "darwin" ? "Command+Q" : "Ctrl+Q",
-            //     click() {
-            //         app.quit();
-            //     },
-            // },
-            // separator,
             {
                 label: "Settings",
                 accelerator: process.platform == "darwin" ? "Command+," : "Ctrl+,",
@@ -44,52 +28,18 @@ const menu = [{
             separator,
         ],
     },
-    // {
-    //     label: "Tools",
-    //     submenu: [{
-    //             label: "Download a video",
-    //             click() {
-    //                 // downloadAVideo
-    //             },
-    //         },
-    //         separator,
-    //         {
-    //             label: "Download a playlist or channel",
-    //             click() {
-    //                 //
-    //             },
-    //         },
-    //         separator,
-    //         {
-    //             label: "Download from list",
-    //             submenu: [{
-    //                     label: "Enter multiple urls",
-    //                     click() {
-    //                         //
-    //                     },
-    //                 },
-    //                 separator,
-    //                 {
-    //                     label: "Open file of urls",
-    //                     click() {
-    //                         //
-    //                     },
-    //                 },
-    //             ],
-    //         },
-    //     ],
-    // },
     {
         label: "View",
-        submenu: [{
-                label: "minimize window",
-                accelerator: process.platform == "darwin" ? "Command+Shift+I" : "Ctrl+Shift+I",
-                role: "minimize",
-            },
+        submenu: [
             {
                 label: "Toggle Full Screen",
                 accelerator: process.platform == "darwin" ? "F11" : "F11",
                 role: "togglefullscreen",
+            },
+            {
+                label: "Minimize",
+                accelerator: process.platform == "darwin" ? "Command+M" : "Ctrl+M",
+                role: "minimize",
             },
             {
                 label: "Toggle Developer Tools",
@@ -105,7 +55,14 @@ const menu = [{
     },
     {
         label: "Help",
-        submenu: [{
+        submenu: [
+            {
+                label: "Check for updates...",
+                click() {
+                    //https://www.electron.build/auto-update
+                },
+            },
+            {
                 label: "Learn More",
                 click() {
                     shell.openExternal("https://github.com/SB-Ansel/duck-dlc");

@@ -12,6 +12,7 @@ import {connect} from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {Divider, Paper, InputBase, IconButton} from '@material-ui/core';
 import {FolderOpenRounded, LaunchRounded } from '@material-ui/icons';
+import { ipcRenderer } from '../../appRuntime'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,36 +35,18 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-// export default function CustomizedInputBase() {
-//     const classes = useStyles();
-//     return (
-//       <Paper component="form" className={classes.root}>
-//         <IconButton className={classes.iconButton} aria-label="folder">
-//           <FolderOpenRounded/>
-//         </IconButton>
-
-//         <InputBase
-//           className={classes.input}
-//           placeholder="Quack!"
-//           inputProps={{ 'aria-label': 'Enter a valid youtube url' }}
-//         />
-//         <Divider className={classes.divider} orientation="vertical" />
-//         <IconButton color="primary" className={classes.iconButton} aria-label="directions">
-//           <LaunchRounded/>
-//         </IconButton>
-//       </Paper>    
-//     );
-//   }
-
-
   // Snackbar popup when download is complete! https://callstack.github.io/react-native-paper/snackbar.html
-
 
 const Home = (props) => {
   const classes = useStyles();
+
+  function downloadsDirectory(){
+    ipcRenderer.send('downloadsDirectory', props.settings.path)
+  }
+  
   return (
     <Paper component="form" className={classes.root}>
-      <IconButton className={classes.iconButton} aria-label="folder">
+      <IconButton className={classes.iconButton} onClick={downloadsDirectory}>
         <FolderOpenRounded/>
       </IconButton>
 
