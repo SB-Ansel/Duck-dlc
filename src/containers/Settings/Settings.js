@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import classes from './Settings.module.css';
 import _uniqueId from 'lodash/uniqueId';
-import { Tooltip, IconButton } from '@material-ui/core';
+import {Tooltip, IconButton} from '@material-ui/core';
 import Setting from './../../components/Settings/Setting/Setting';
 import * as actionTypes from '../../store/actions';
 import { connect } from 'react-redux';
-import { Close, MoreHoriz } from '@material-ui/icons';
+import { Close, MoreHoriz} from '@material-ui/icons';
 import { ipcRenderer } from '../../appRuntime' //ipc bridge, thanks webpack.
 
 const Settings = (props) => {
@@ -16,7 +16,7 @@ const Settings = (props) => {
         if (propertyName)
             props.onSetSetting(propertyName, event.target.value);
     }
-
+    
     let closeButtonHandler = () => {
         // Use redux to route back to home.
         props.onToggleSettings(false);
@@ -31,7 +31,8 @@ const Settings = (props) => {
         let openDirectoryListener = (event, arg) => {
             console.log("openDirectory-reply");
             console.log(arg);
-            if (arg.length > 0) {
+            if (arg.length > 0)
+            {
                 // Set path setting to first path from array 
                 props.onSetSetting("path", arg[0])
             }
@@ -45,24 +46,27 @@ const Settings = (props) => {
             // Unregister listener
             ipcRenderer.removeListener("openDirectory-reply", openDirectoryListener)
         }
-
+        
     })
 
     return (
         <div className={classes.Settings}>
-            <IconButton className={classes.closeButton} style={{ color: 'white' }} onClick={closeButtonHandler} aria-label="Close">
+            <IconButton className={classes.closeButton} style={{color:'white'}} onClick={closeButtonHandler} aria-label="Close">
                 <Close />
             </IconButton>
-            <h1>Settings</h1>
-            <Setting
-                title="Default download directory"
-                type="downloadDirectory"
-                handler={onTextInputChange}
-                desc="Change the default download directory for duck-dlc."
-                property="path"
-                value={props.settings.path || ''}
-                Icon={<Tooltip title="Select download location" arrow><IconButton className={classes.sideButton} style={{ color: 'white' }} onClick={openDirectory}><MoreHoriz></MoreHoriz></IconButton></Tooltip>}
+            <h1>Settings</h1>            
+            <Setting 
+            title="Default download directory" 
+            type="downloadDirectory" 
+            handler={onTextInputChange}
+            desc="Change the default download directory for duck-dlc."
+            property="path"
+            value={props.settings.path || ''}
+            Icon={<Tooltip title="Select download location" arrow><IconButton className={classes.sideButton} style={{color:'white'}} onClick={openDirectory}><MoreHoriz></MoreHoriz></IconButton></Tooltip>}
             />
+            
+            
+
             <h1>About this app</h1>
             <h5>Some generic information here about app</h5>
         </div>
