@@ -112,5 +112,7 @@ ipcMain.on('openDirectory', (event) => { //handle incoming request and return pr
 ipcMain.on('downloadsDirectory', (event, args) => {
     shell.openPath(args)
 });
+
+require("./youtube-dl-handler.js");
 ////#endRegion - IPC handlers
 module.exports = function mainWindow() { } //Imports sb-ansel_control.js
