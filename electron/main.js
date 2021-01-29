@@ -91,26 +91,28 @@ app.on('activate', () => {
         createWindow()
     }
 })
-////#Region - Functions
-function runTimeChk1(){
-    duckDependencies.forEach(function(value){
-        try {
-            if(fs.existsSync(__dirname+'\\bin\\'+value)) {
-                //pass
-            } else {
-                console.log('The file does not exist.' + value);
-                dialog.showErrorBox('Oh snap!','The dependency '+value+' is missing, please add it and try again.')
-                process.exit();
-            }
-        } catch (err) {
-            console.error(err);
-        }
-    });
-};
+//Update Fri 29th - decided to nuke this section as it's no longer relevant (npm youtube-dl), (future work) turn this section into duck-dlc update check instead.
 
-function runTimeChk2(){
-    //Gonna need to update any youtube-dl dependency in the bin folder.
-};
+////#Region - Functions
+// function runTimeChk1(){
+//     duckDependencies.forEach(function(value){
+//         try {
+//             if(fs.existsSync(__dirname+'\\bin\\'+value)) {
+//                 //pass
+//             } else {
+//                 console.log('The file does not exist.' + value);
+//                 dialog.showErrorBox('Oh snap!','The dependency '+value+' is missing, please add it and try again.')
+//                 process.exit();
+//             }
+//         } catch (err) {
+//             console.error(err);
+//         }
+//     });
+// };
+
+// function runTimeChk2(){
+//     //Gonna need to update any youtube-dl dependency in the bin folder.
+// };
 ////#EndRegion - Functions
 
 ////#Region - IPC handlers
@@ -126,12 +128,12 @@ ipcMain.handle('setStoreValue', (event, key, value) => {
 //Main runtimeChks - Run dependencies checks.
 ipcMain.on('runtimeChks',(event, args) => {
     try {
-        //Stage 1
-        event.reply("runtimeChks-reply", "Checking for dependencies!")
-        runTimeChk1()
-        //Stage 2
-        event.reply("runtimeChks-reply", "Checking for updates!")
-        runTimeChk2()
+        // //Stage 1
+        // event.reply("runtimeChks-reply", "Checking for dependencies!")
+        // runTimeChk1()
+        // //Stage 2
+        // event.reply("runtimeChks-reply", "Checking for updates!")
+        // runTimeChk2()
     }
     catch (e) {
         console.log(e);
